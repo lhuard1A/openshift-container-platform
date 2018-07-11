@@ -312,10 +312,10 @@ sed -i -e "s/# Defaults    requiretty/Defaults    requiretty/" /etc/sudoers
 
 # Install OpenShift Atomic Client
 cd /root
-mkdir .kube
+mkdir -p .kube
 runuser ${SUDOUSER} -c "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${SUDOUSER}@${MASTER}-0:~/.kube/config /tmp/kube-config"
 cp /tmp/kube-config /root/.kube/config
-mkdir /home/${SUDOUSER}/.kube
+mkdir -p /home/${SUDOUSER}/.kube
 cp /tmp/kube-config /home/${SUDOUSER}/.kube/config
 chown --recursive ${SUDOUSER} /home/${SUDOUSER}/.kube
 rm -f /tmp/kube-config
